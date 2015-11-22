@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block container %}
+<h1 class="text-center">Shortr!</h1>
+
+<form method="POST" action="{{ url_for('index') }}">
+  {{ form.hidden_tag() }}
+  {{ render_field(form.url) }}
+  {{ form.submit(class="btn btn-success center-block") }}
+  <br>
+  {% if url %}
+    <div class="col-xs-8 col-xs-offset-2 alert alert-success">
+      <p class="text-center">{{ url }}</p>
+    </div>
+  {% endif %}
+</form>
+
+{% endblock %}
